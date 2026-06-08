@@ -813,7 +813,131 @@ h2 {
   transform: scale(1.03);
 }
 
+/* ── Masonry Gallery ─────────────────────────────────────────── */
+
+.masonry-grid {
+  columns: 3;
+  column-gap: 0.85rem;
+}
+
+@media (max-width: 900px) {
+  .masonry-grid {
+    columns: 2;
+  }
+}
+
+@media (max-width: 500px) {
+  .masonry-grid {
+    columns: 1;
+  }
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 0.85rem;
+  border-radius: 0.85rem;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  position: relative;
+  cursor: pointer;
+  display: block;
+}
+
+.masonry-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 350ms ease;
+}
+
+.masonry-item:hover .masonry-img {
+  transform: scale(1.04);
+}
+
+.masonry-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 300ms ease;
+}
+
+.masonry-item:hover .masonry-overlay {
+  background: rgba(0, 0, 0, 0.28);
+}
+
+.masonry-zoom {
+  color: #fff;
+  font-size: 2rem;
+  opacity: 0;
+  transform: scale(0.7);
+  transition: opacity 250ms ease, transform 250ms ease;
+}
+
+.masonry-item:hover .masonry-zoom {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ── Lightbox ────────────────────────────────────────────────── */
+
+.lightbox-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  cursor: zoom-out;
+  backdrop-filter: blur(8px);
+}
+
+.lightbox-inner {
+  max-width: min(90vw, 1100px);
+  max-height: 90vh;
+  cursor: default;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.lightbox-img {
+  width: 100%;
+  height: auto;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 0.75rem;
+  display: block;
+}
+
+.lightbox-close {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 200ms ease;
+  z-index: 10000;
+  backdrop-filter: blur(4px);
+}
+
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
 /* ── End Gallery ────────────────────────────────────────────── */
+
 
 /* ── Contact ────────────────────────────────────────────────── */
 

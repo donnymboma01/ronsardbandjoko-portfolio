@@ -41,8 +41,6 @@ export default function SwotPage() {
             ].map((item) => <li key={item}>{item}</li>)}
           </ul>
         </section>
-
-        {/* Menaces – red */}
         <section className="swot-quadrant swot-menaces">
           <h2 className="swot-q-title">Menaces</h2>
           <ul className="swot-q-list">
@@ -53,14 +51,6 @@ export default function SwotPage() {
             ].map((item) => <li key={item}>{item}</li>)}
           </ul>
         </section>
-
-        {/* Centre badge */}
-        {/* <div className="swot-badge" aria-hidden="true">
-          <span className="sw">S</span>
-          <span className="wo">W</span>
-          <span className="ow">O</span>
-          <span className="wt">T</span>
-        </div> */}
       </div>
     </div>
   );
