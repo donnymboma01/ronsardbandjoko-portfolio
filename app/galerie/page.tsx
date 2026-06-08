@@ -40,7 +40,6 @@ export default function GaleriePage() {
         </p>
       </div>
 
-      {/* Masonry grid via CSS columns */}
       <div className="masonry-grid">
         {images.map((img, i) => (
           <div
@@ -68,7 +67,6 @@ export default function GaleriePage() {
         ))}
       </div>
 
-      {/* Lightbox */}
       {lightbox && (
         <div
           className="lightbox-backdrop"

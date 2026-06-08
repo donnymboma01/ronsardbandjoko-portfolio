@@ -42,7 +42,6 @@ export default function ContactPage() {
             </>
           );
 
-          // Only FiLinkedin should be cliquable
           const isLinkedIn = Icon === FiLinkedin;
 
           return (

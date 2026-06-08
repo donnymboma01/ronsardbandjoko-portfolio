@@ -6,7 +6,6 @@ export default function SwotPage() {
   return (
     <div className="page narrow-page">
       <div className="swot-board">
-        {/* Forces – blue */}
         <section className="swot-quadrant swot-forces">
           <h2 className="swot-q-title">Forces</h2>
           <ul className="swot-q-list">
@@ -16,7 +15,6 @@ export default function SwotPage() {
           </ul>
         </section>
 
-        {/* Faiblesses – green */}
         <section className="swot-quadrant swot-faiblesses">
           <h2 className="swot-q-title">Faiblesses</h2>
           <ul className="swot-q-list">
@@ -28,7 +26,6 @@ export default function SwotPage() {
           </ul>
         </section>
 
-        {/* Opportunités – yellow/amber */}
         <section className="swot-quadrant swot-opportunites">
           <h2 className="swot-q-title">Opportunités</h2>
           <ul className="swot-q-list">
