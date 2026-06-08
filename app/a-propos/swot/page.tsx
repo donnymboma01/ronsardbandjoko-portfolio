@@ -55,12 +55,12 @@ export default function SwotPage() {
         </section>
 
         {/* Centre badge */}
-        <div className="swot-badge" aria-hidden="true">
+        {/* <div className="swot-badge" aria-hidden="true">
           <span className="sw">S</span>
           <span className="wo">W</span>
           <span className="ow">O</span>
           <span className="wt">T</span>
-        </div>
+        </div> */}
       </div>
     </div>
   );

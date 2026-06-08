@@ -6,18 +6,19 @@ export default function Home() {
   return (
     <div className="page">
       <section className="home-hero">
+        <div className="hero-photo-panel mobile-only">
+          <Image
+            src="/images/ronsard.PNG"
+            alt="Ronsard Bandjoko"
+            fill
+            sizes="100vw"
+            style={{ objectFit: "cover", objectPosition: "top" }}
+            priority
+          />
+        </div>
+
         <div className="hero-copy">
           <div className="hero-intro">
-            {/* <div className="hero-avatar">
-              <Image
-                src="/images/ronsard.PNG"
-                alt="Ronsard Bandjoko"
-                fill
-                sizes="80px"
-                style={{ objectFit: "cover", objectPosition: "top" }}
-                priority
-              />
-            </div> */}
             <div>
               <p className="hero-name">Ronsard Bandjoko</p>
               <p className="lead" style={{ margin: 0 }}>
@@ -64,7 +65,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="hero-photo-panel">
+        <div className="hero-photo-panel desktop-only">
           <Image
             src="/images/ronsard.PNG"
             alt="Ronsard Bandjoko"

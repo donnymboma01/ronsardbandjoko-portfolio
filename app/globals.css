@@ -1,14 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  --background: #1c2120;
-  --surface: #252c2b;
-  --foreground: #dde5e3;
-  --muted: #8a9e9b;
-  --line: #2e3837;
-  --accent: #3ea8a4;
-  --accent-strong: #5dcfcb;
-  --secondary: #cb7d95;
+  --background: #fdfdfd;
+  --surface: #ffffff;
+  --foreground: #1c2120;
+  --muted: #61706b;
+  --line: #e2e8e5;
+  --accent: #246b68;
+  --accent-strong: #164d4a;
+  --secondary: #7b3f55;
+}
+
+[data-theme='dark'] {
+  --background: #2d3332;
+  --surface: #3a4241;
+  --foreground: #f1f4f3;
+  --muted: #a4b5b2;
+  --line: #3e4847;
+  --accent: #5ec4c0;
+  --accent-strong: #7eeae6;
+  --secondary: #d896aa;
 }
 
 @theme inline {
@@ -51,102 +62,201 @@ button {
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 20;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  width: min(100% - 2rem, 1120px);
-  margin: 0 auto;
-  padding: 1rem 0;
-  background: color-mix(in srgb, var(--background) 88%, transparent);
-  backdrop-filter: blur(18px);
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  background: color-mix(in srgb, var(--background) 92%, transparent);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--line);
 }
 
 .brand-link {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 0.75rem;
-  min-width: 0;
+  gap: 0.85rem;
+  text-decoration: none;
+  flex-shrink: 0;
 }
 
 .brand-mark {
+  width: 2.22rem;
+  height: 2.22rem;
   display: grid;
-  flex: 0 0 auto;
-  width: 2.6rem;
-  height: 2.6rem;
   place-items: center;
-  border: 1px solid var(--line);
-  border-radius: 999px;
   background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 50%;
   color: var(--accent-strong);
-  font-weight: 700;
+  font-weight: 800;
+  font-size: 1rem;
 }
 
 .brand-name {
   display: block;
-  font-size: 0.98rem;
-  font-weight: 650;
-  line-height: 1.15;
+  font-size: 1.15rem;
+  font-weight: 750;
+  color: var(--foreground);
+  letter-spacing: -0.02em;
 }
 
-.menu-button {
-  display: inline-grid;
-  width: 2.75rem;
-  height: 2.75rem;
-  place-items: center;
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.theme-toggle {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
   border: 1px solid var(--line);
-  border-radius: 999px;
   background: var(--surface);
   color: var(--foreground);
+  display: grid;
+  place-items: center;
   cursor: pointer;
 }
 
-.menu-button svg {
-  width: 1.25rem;
-  height: 1.25rem;
-}
-
-.site-nav {
-  position: absolute;
-  top: calc(100% + 0.5rem);
-  right: 0;
-  left: 0;
-  display: grid;
-  gap: 0.35rem;
-  padding: 0.65rem;
+.menu-button {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
   border: 1px solid var(--line);
-  border-radius: 1rem;
-  background: color-mix(in srgb, var(--surface) 96%, transparent);
-  box-shadow: 0 18px 45px rgba(23, 31, 29, 0.12);
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(-0.35rem);
-  transition:
-    opacity 180ms ease,
-    transform 180ms ease;
+  background: var(--surface);
+  color: var(--foreground);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
 }
 
-.site-nav-open {
-  opacity: 1;
+.mobile-nav-overlay {
+  position: fixed;
+  top: 4.25rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--background);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  overflow-y: auto;
+  z-index: 2000;
   pointer-events: auto;
-  transform: translateY(0);
+}
+
+.mobile-nav-overlay--hidden {
+  display: none;
+  pointer-events: none;
+}
+
+.mobile-nav-overlay .nav-link,
+.mobile-nav-overlay .nav-group-trigger {
+  width: 100%;
+  font-size: 1.1rem;
+  padding: 1rem;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile-nav-overlay .nav-dropdown {
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--line);
+  margin-bottom: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Nav desktop : cachée sur mobile */
+.site-nav-desktop {
+  display: none;
 }
 
 .nav-link {
-  border-radius: 0.75rem;
-  padding: 0.85rem 0.9rem;
-  color: var(--muted);
-  font-size: 0.94rem;
-  transition:
-    background 160ms ease,
-    color 160ms ease;
+  display: block;
+  padding: 0.75rem 1rem;
+  color: var(--foreground);
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
 }
 
-.nav-link:hover,
-.nav-link-active {
-  background: color-mix(in srgb, var(--accent-strong) 14%, var(--surface));
+.nav-link:hover, .nav-link-active {
+  background: var(--surface);
   color: var(--accent-strong);
+}
+
+.nav-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-group-trigger {
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+/* Mobile: dropdown always visible when rendered (React controls rendering) */
+.nav-dropdown {
+  display: flex;
+  flex-direction: column;
+  padding-left: 1.25rem;
+  margin: 0.25rem 0 0.5rem;
+  border-left: 1px solid var(--line);
+  gap: 0.1rem;
+}
+
+.nav-group-trigger {
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  color: var(--foreground);
+  font-size: 1rem;
+  font-weight: 600;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+
+.nav-group-trigger:hover {
+  background: var(--surface);
+  color: var(--accent-strong);
+}
+
+.nav-chevron {
+  width: 1rem;
+  height: 1rem;
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.nav-chevron-open {
+  transform: rotate(180deg);
+}
+
+.nav-cv-link {
+  font-weight: 600;
+  color: var(--accent-strong);
+}
+
+.nav-cv-link:hover {
+  background: color-mix(in srgb, var(--accent-strong) 8%, var(--surface));
 }
 
 .page {
@@ -541,35 +651,6 @@ h2 {
 
 /* ── Dropdown navigation ──────────────────────────────────────── */
 
-.nav-group {
-  position: relative;
-}
-
-.nav-group-trigger {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  width: 100%;
-  border: none;
-  border-radius: 0.75rem;
-  padding: 0.85rem 0.9rem;
-  background: transparent;
-  color: var(--muted);
-  font-size: 0.94rem;
-  font-weight: normal;
-  text-align: left;
-  cursor: pointer;
-  transition:
-    background 160ms ease,
-    color 160ms ease;
-}
-
-.nav-group-trigger:hover,
-.nav-group-trigger-active {
-  background: color-mix(in srgb, var(--accent-strong) 14%, var(--surface));
-  color: var(--accent-strong);
-}
-
 .nav-chevron {
   flex: 0 0 auto;
   width: 0.9rem;
@@ -580,27 +661,6 @@ h2 {
 
 .nav-chevron-open {
   transform: rotate(180deg);
-}
-
-/* Mobile dropdown: inline, collapsible */
-.nav-dropdown {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 200ms ease;
-  overflow: hidden;
-}
-
-.nav-dropdown > * {
-  min-height: 0;
-  overflow: hidden;
-}
-
-.nav-dropdown-open {
-  grid-template-rows: 1fr;
-}
-
-.nav-dropdown .nav-link {
-  padding-left: 1.75rem;
 }
 
 /* ── End Dropdown navigation ──────────────────────────────────── */
@@ -703,16 +763,31 @@ h2 {
 
 .hero-photo-panel {
   position: relative;
-  border-radius: 1rem;
+  border-radius: 1.5rem;
   overflow: hidden;
   border: 1px solid var(--line);
-  aspect-ratio: 3 / 4;
-  min-height: 19rem;
 }
 
-/* ── End Hero photo ─────────────────────────────────────────── */
+.hero-photo-panel.mobile-only {
+  width: 100%;
+  aspect-ratio: 4/5;
+  margin-bottom: 2rem;
+}
 
-/* ── Gallery ────────────────────────────────────────────────── */
+@media (min-width: 1024px) {
+  .hero-photo-panel.mobile-only {
+    display: none;
+  }
+
+  .hero-photo-panel.desktop-only {
+    display: block;
+    position: sticky;
+    top: 5.5rem;
+    height: calc(100vh - 7rem);
+    background: var(--line);
+    border-radius: 2rem;
+  }
+}
 
 .gallery-grid {
   display: grid;
@@ -802,97 +877,82 @@ h2 {
   }
 }
 
-@media (min-width: 760px) {
+@media (min-width: 768px) {
   .site-header {
-    padding: 1.2rem 0;
+    padding: 1rem 3rem;
   }
 
   .menu-button {
     display: none;
   }
 
-  .site-nav {
-    position: static;
+  .mobile-nav-overlay {
+    display: none !important;
+  }
+
+  /* Nav desktop : visible en ligne */
+  .site-nav-desktop {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    gap: 0.15rem;
-    width: auto;
-    padding: 0;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    box-shadow: none;
-    opacity: 1;
-    pointer-events: auto;
-    transform: none;
+    gap: 0.25rem;
   }
 
   .nav-link {
-    padding: 0.65rem 0.75rem;
-    font-size: 0.9rem;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.92rem;
   }
 
-  /* Desktop: trigger looks like a nav-link */
+  .nav-group {
+    position: relative;
+  }
+
   .nav-group-trigger {
-    width: auto;
-    padding: 0.65rem 0.75rem;
-    font-size: 0.9rem;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.92rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
   }
 
-  /* Desktop: dropdown is an absolute popup, shown on hover/focus-within */
+  /* Desktop: dropdown shown by React state, positioned as popup */
   .nav-dropdown {
+    display: flex;
     position: absolute;
-    top: calc(100% + 0.35rem);
-    right: 0;
+    top: 100%;
+    left: 0;
     min-width: 14rem;
-    display: grid;
-    grid-template-rows: 1fr;
-    overflow: visible;
-    gap: 0.2rem;
-    padding: 0.5rem;
+    background: var(--surface);
     border: 1px solid var(--line);
-    border-radius: 0.85rem;
-    background: color-mix(in srgb, var(--surface) 96%, transparent);
-    box-shadow: 0 18px 45px rgba(23, 31, 29, 0.12);
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-0.35rem);
-    transition:
-      opacity 180ms ease,
-      transform 180ms ease;
-    z-index: 30;
+    border-radius: 0.75rem;
+    padding: 0.4rem;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+    flex-direction: column;
+    z-index: 1000;
+    margin-top: 0.25rem;
+    gap: 0.1rem;
+    /* reset mobile styles */
+    padding-left: 0.4rem;
+    border-left: none;
+    margin-bottom: 0;
   }
 
-  .nav-dropdown > * {
-    min-height: unset;
-    overflow: visible;
-  }
-
-  .nav-dropdown-open,
-  .nav-group:hover .nav-dropdown,
-  .nav-group:focus-within .nav-dropdown {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
+  .nav-group-trigger {
+    padding: 0.55rem 0.9rem;
+    font-size: 0.92rem;
+    width: auto;
+    border-radius: 0.5rem;
   }
 
   .nav-dropdown .nav-link {
-    padding: 0.65rem 0.75rem;
-    white-space: nowrap;
-  }
-
-  .nav-chevron {
-    margin-left: 0;
+    font-size: 0.92rem;
+    padding: 0.55rem 0.8rem;
+    border-radius: 0.4rem;
   }
 
   .home-hero {
     grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.8fr);
-  }
-
-  .technical-visual {
-    min-height: 28rem;
-    border-block: 0;
-    border-left: 1px solid var(--line);
   }
 
   .timeline-item {

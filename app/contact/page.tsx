@@ -42,15 +42,17 @@ export default function ContactPage() {
             </>
           );
 
+          // Only FiLinkedin should be cliquable
+          const isLinkedIn = Icon === FiLinkedin;
+
           return (
             <li key={item.label}>
-              {item.href ? (
+              {item.href && isLinkedIn ? (
                 <a
                   className="contact-item"
                   href={item.href}
-                  {...(item.href.startsWith("http")
-                    ? { target: "_blank", rel: "noopener noreferrer" }
-                    : {})}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   {inner}
                 </a>

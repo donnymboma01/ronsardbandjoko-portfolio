@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Ronsard Bandjoko | Portfolio",
   description:
     "Portfolio de Ronsard Bandjoko, étudiant en bachelier électromécanique.",
+  icons: {
+    icon: "/images/ronsard.PNG",
+  },
 };
 
 export default function RootLayout({
