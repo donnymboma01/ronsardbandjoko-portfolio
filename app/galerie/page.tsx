@@ -13,8 +13,8 @@ const images = [
   { src: "/image7.png", alt: "Photo 7" },
   { src: "/image8.png", alt: "Photo 8" },
   { src: "/image9.png", alt: "Photo 9" },
-  { src: "/image10.png", alt: "Photo 10" },
-  { src: "/image11.png", alt: "Photo 11" },
+  { src: "/image10.PNG", alt: "Photo 10" },
+  { src: "/image11.PNG", alt: "Photo 11" }
 ];
 
 export default function GaleriePage() {
