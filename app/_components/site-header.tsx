@@ -27,13 +27,11 @@ export function SiteHeader() {
     }
   }, []);
 
-  // Fermer le menu automatiquement quand on change de page
   useEffect(() => {
     setIsOpen(false);
     setOpenGroup(null);
   }, [pathname]);
 
-  // Fermer le dropdown si on clique en dehors (desktop uniquement, pas dans la mobile overlay)
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
       const inHeader = navRef.current && navRef.current.contains(e.target as Node);
